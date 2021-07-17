@@ -63,3 +63,29 @@ contract Hino is Truck{
 contract Yamaha is MotorCycle{
     
 }
+contract carservice is Cars {
+    
+    function _carservice(address add) public pure returns (string memory) {
+        
+       carservice a = carservice(add);
+       return a.service();
+       }
+    }
+
+contract Truckservice is Truck {
+    
+    function _Truckservice(address add) public pure returns (string memory) {
+        
+       Truckservice a = Truckservice(add);
+       return a.service();
+       }
+    }
+
+contract MotorCycleservice is MotorCycle {
+    
+    function _MotorCycleservice(address add) public pure returns (string memory) {
+        
+       MotorCycleservice a = MotorCycleservice(add);
+       return a.service();
+       }
+    } 
