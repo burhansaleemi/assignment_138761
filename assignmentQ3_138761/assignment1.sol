@@ -57,12 +57,12 @@ contract Alto is Cars {
 
 contract Hino is Truck{
     
-    
 }
 
 contract Yamaha is MotorCycle{
     
 }
+
 contract carservice is Cars {
     
     function _carservice(address add) public pure returns (string memory) {
