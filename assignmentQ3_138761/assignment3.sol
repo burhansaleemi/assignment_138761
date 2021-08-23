@@ -21,11 +21,12 @@ contract erctoken is ERC20 {
      }
      
      fallback() external payable {
-        if (msg.value > 0 ) {
+        if (msg.value > 0 ){
             _mint(msg.sender, msg.value * rate * 10 ** 18 );
         } 
-        
-    function changerate(address to , uint amount) external {
+     }
+     
+      function changerate(uint amount) external {
         require(msg.sender == owner , "only owner can change the rate");
         rate = amount;
         
