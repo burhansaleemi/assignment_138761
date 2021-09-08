@@ -10,6 +10,7 @@ contract erctoken is Ownable , ERC20 {
     uint private tokenCap = 2000000 * 100 ** 18;
     uint private contractdeploytime;
     uint public constant DELAY = 1 minutes;
+     mapping(address => bool) private priceApprovers;
     constructor() ERC20('mytoken','MYT'){
        
        _mint(msg.sender, 1000000 * 10 ** 18);
@@ -53,5 +54,16 @@ contract erctoken is Ownable , ERC20 {
     payable(msg.sender).transfer(value);
     
     }
-    
+    modifier priceAppr() { 
+        require(priceApprovers[msg.sender], "Either Owner or Approver can call this function");
+        _; 
+        
+    }
+    function delegatePriceApproval(address _approver) external onlyOwner {
+        priceApprovers[_approver] = true;
+    }
+    function revokePriceApproval(address _approver) external onlyOwner {
+        require(priceApprovers[_approver], "The user doesn't exist or already been revoked");
+        priceApprovers[_approver] = false;
+    }
 }
